@@ -19,7 +19,7 @@ async function initializeApp() {
 }
 
 async function loadModels() {
-    await faceapi.nets.tinyFaceDetector.loadFromUri('/models');
+    await faceapi.nets.ssdMobilenetv1.loadFromUri('/models');
     await faceapi.nets.faceRecognitionNet.loadFromUri('/models');
     await faceapi.nets.faceExpressionNet.loadFromUri('/models');
     await faceapi.nets.ageGenderNet.loadFromUri('/models');
@@ -52,14 +52,15 @@ video.addEventListener('play', () => {
     faceapi.matchDimensions(canvas, displaySize);
     
     setInterval(async () => {
-        const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
+        const detections = await faceapi.detectAllFaces(video, new faceapi.SsdMobilenetv1Options({ minConfidence: 0.3 }))
             .withFaceExpressions()
             .withAgeAndGender();
         
         const resizedDetections = faceapi.resizeResults(detections, displaySize);
         canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+        
         faceapi.draw.drawDetections(canvas, resizedDetections);
-        faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
+        faceapi.draw.drawFaceExpressions(canvas, resizedDetections, 0.07);
         
         resizedDetections.forEach(detection => {
             const { age, gender, genderProbability } = detection;
