@@ -30,7 +30,7 @@ startBtn.addEventListener('click', startApp);
 async function startApp() {
     landingPage.style.display = 'none';
     cameraPage.style.display = 'block';
-    
+
     startVideo();
 }
 
@@ -50,17 +50,22 @@ video.addEventListener('play', () => {
     canvas.width = displaySize.width;
     canvas.height = displaySize.height;
     faceapi.matchDimensions(canvas, displaySize);
-    
+
     setInterval(async () => {
-        const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
+        const options = new faceapi.TinyFaceDetectorOptions({
+            inputSize: 224,  
+            scoreThreshold: 0.4
+        });
+
+        const detections = await faceapi.detectAllFaces(video, options)
             .withFaceExpressions()
             .withAgeAndGender();
-        
+
         const resizedDetections = faceapi.resizeResults(detections, displaySize);
         canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-        faceapi.draw.drawDetections(canvas, resizedDetections);
-        faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
-        
+        faceapi.draw.drawDetections(canvas, resizedDetections, { withScore: true });
+        faceapi.draw.drawFaceExpressions(canvas, resizedDetections, 0.05);
+
         resizedDetections.forEach(detection => {
             const { age, gender, genderProbability } = detection;
             new faceapi.draw.DrawTextField(
