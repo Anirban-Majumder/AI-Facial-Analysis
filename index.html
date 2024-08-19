@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Facial Analysis App</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="face-api.min.js"></script>
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div id="landing-page">
+        <h1>Facial Analysis App</h1>
+        <p>Detect facial expressions, age, and gender in real-time!</p>
+        <p id="loading-status">Loading models...</p>
+        <button id="start-btn" disabled>Start</button>
+        <p class="disclaimer">We need camera permission. All data is kept on your device.</p>
+    </div>
+    <div id="camera-page" style="display: none;">
+        <video id="video" autoplay muted></video>
+        <canvas id="canvas"></canvas>
+    </div>
+    <footer>
+        <p>Made with ❤️ by Anirban Majumder</p>
+    </footer>
+</body>
+</html>
