@@ -30,22 +30,17 @@ To run the app locally:
    ```bash
     cd ai-facial-analysis-app
    ```
-    Open index.html in your browser. No need for a server.
+   Open index.html in your browser. No need for a server.
 
-        Note: The app requires camera access. Ensure you grant permission when prompted.
+   Note: The app requires camera access. Ensure you grant permission when prompted.
 
 
 How It Works
 
-    Load Models: On load, the app downloads pre-trained models provided by face-api.js.
-    Camera Setup: Once the models are loaded, you can start the camera.
-    Facial Analysis: The app will analyze your face in real-time, detecting emotions, age, and gender.
+Load Models: On load, the app downloads pre-trained models provided by face-api.js.
+Camera Setup: Once the models are loaded, you can start the camera.
+Facial Analysis: The app will analyze your face in real-time, detecting emotions, age, and gender.
 
-Future Enhancements
-
-    Add more detailed facial attributes like landmarks and head pose estimation.
-    Provide visual indicators for detected expressions.
-    Support for mobile browsers.
 
 Disclaimer
 
