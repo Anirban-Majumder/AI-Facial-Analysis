@@ -1,6 +1,6 @@
 # AI Facial Analysis App
 
-A real-time web application that uses AI to detect facial expressions, age, and gender! This app runs directly in the browser using `face-api.js` and accesses your camera for facial analysis. No data is transmitted; everything is processed locally on your device.
+A real-time web application that uses AI to detect facial expressions, age, and gender! This app runs directly in the browser using `tensorflow.js` and accesses your camera for facial analysis. No data is transmitted; everything is processed locally on your device.
 
 ## Demo
 
