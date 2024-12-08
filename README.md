@@ -25,7 +25,7 @@ To run the app locally:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/ai-facial-analysis-app.git
+   git clone https://github.com/Anirban-Majumder/ai-facial-analysis-app.git
    ```
    ```bash
     cd ai-facial-analysis-app
